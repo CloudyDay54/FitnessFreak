@@ -8,42 +8,64 @@
 
 
     <EditText
-        android:id="@+id/txtUsernameLogin"
+        android:id="@+id/txtFirstNameSignup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/enteremail"
+        android:hint="@string/firstname"
         android:inputType="text"/>
 
     <EditText
-        android:id="@+id/txtPasswordLogin"
+        android:id="@+id/txtLastNameSignup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/lastname"
+        android:inputType="text"/>
+
+    <EditText
+        android:id="@+id/txtEmailSignup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/enteremail"
+        android:inputType="textEmailAddress"/>
+
+    <EditText
+        android:id="@+id/txtPasswordSignup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/enterpassword"
         android:inputType="textPassword"/>
 
-    <Button
-        android:id="@+id/btnLoginLogin"
+    <EditText
+        android:id="@+id/txtRetypePasswordSignup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/login"
-        android:textColor="@android:color/black"
-        android:background="@color/myfavouriteblue"
-        />
+        android:hint="@string/retypepassword"
+        android:inputType="textPassword"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/donthaveaccount"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"/>
 
     <Button
-        android:id="@+id/btnSignupLogin"
+        android:id="@+id/btnCreateAccountSignup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/createaccount"
         android:textColor="@android:color/black"
         android:background="@color/myfavouriteblue"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/alreadyhaveaccount"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"/>
+
+    <Button
+        android:id="@+id/btnLoginSignup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/login"
+        android:textColor="@android:color/black"
+        android:background="@color/myfavouriteblue"/>
+
 
 
 </LinearLayout>

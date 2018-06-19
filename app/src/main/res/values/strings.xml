@@ -1,4 +1,23 @@
 <resources>
     <string name="app_name">FitnessFreak</string>
     <string name="action_settings">Settings</string>
+
+    <string name="enteremail">Enter Email</string>
+    <string name="enterpassword">Enter Password</string>
+    <string name="login">Login</string>
+    <string name="createaccount">Create Account</string>
+    <string name="donthaveaccount">Don\'t Have an Account?</string>
+    <string name="retypepassword">Retype Password</string>
+    <string name="alreadyhaveaccount">Already Have an Account? Login Below</string>
+    <string name="firstname">Enter First Name</string>
+    <string name="lastname">Enter Last Name</string>
+
+    <string name="grid_layout">GRID LAYOUT</string>
+    <string name="language_preference">Language Preference</string>
+    <string name="see_past_sessions">See Past Sessions</string>
+    <string name="record_workout_session">Record Workout Session</string>
+    <string name="gym_instructors">Gym Instructors</string>
+    <string name="gym_locations">Gym Locations</string>
+    <string name="profile">Profile</string>
+
 </resources>

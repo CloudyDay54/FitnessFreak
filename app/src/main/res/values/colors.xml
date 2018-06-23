@@ -5,6 +5,7 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="myfavouriteblue">#2a65b0</color>
+    <color name="myfavouriteyellow">#f4bd1a</color>
 
 
     <!--Blue -->
@@ -25,5 +26,20 @@
 
     <color name="viewBg">#f1f5f8</color>
     <color name="album_title">#4c4c4c</color>
+
+    <!-- Yellow -->
+    <color name="material_yellow_500">#f9ce1e</color>
+    <color name="material_yellow_50">#fdf7e2</color>
+    <color name="material_yellow_100">#fceeba</color>
+    <color name="material_yellow_200">#fbe58c</color>
+    <color name="material_yellow_300">#f9dd5f</color>
+    <color name="material_yellow_400">#f9d43d</color>
+    <color name="material_yellow_700">#f4a81c</color>
+    <color name="material_yellow_800">#f19320</color>
+    <color name="material_yellow_900">#ec7023</color>
+    <color name="material_yellow_A100">#fedd7f</color>
+    <color name="material_yellow_A200">#ffcd40</color>
+    <color name="material_yellow_A400">#fdbb11</color>
+    <color name="material_yellow_A700">#f89d1b</color>
 
 </resources>

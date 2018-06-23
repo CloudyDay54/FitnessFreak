@@ -19,5 +19,7 @@
     <string name="gym_instructors">Gym Instructors</string>
     <string name="gym_locations">Gym Locations</string>
     <string name="profile">Profile</string>
+    <string name="button">Button</string>
+    <string name="logout">Logout</string>
 
 </resources>

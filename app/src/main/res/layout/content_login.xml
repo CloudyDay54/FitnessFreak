@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:layout_gravity="center_vertical"
     android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/workout2"
     xmlns:android="http://schemas.android.com/apk/res/android" >
 
 
@@ -12,6 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/enteremail"
+        android:textColor="@color/myfavouriteyellow"
+        android:textColorHint="@color/myfavouriteyellow"
         android:inputType="text"/>
 
     <EditText
@@ -19,6 +23,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/enterpassword"
+        android:textColor="@color/myfavouriteyellow"
+        android:textColorHint="@color/myfavouriteyellow"
         android:inputType="textPassword"/>
 
     <Button
@@ -26,24 +32,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/login"
+        android:layout_margin="4dp"
         android:textColor="@android:color/black"
-        android:background="@color/myfavouriteblue"
-        />
+        android:background="@color/myfavouriteyellow"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/donthaveaccount"
         android:textAlignment="center"
-        android:textColor="@android:color/black"/>
+        android:layout_margin="4dp"
+        android:textColor="@color/myfavouriteyellow"/>
 
     <Button
         android:id="@+id/btnSignupLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/createaccount"
+        android:layout_margin="4dp"
         android:textColor="@android:color/black"
-        android:background="@color/myfavouriteblue"/>
+        android:background="@color/myfavouriteyellow"/>
 
 
 </LinearLayout>

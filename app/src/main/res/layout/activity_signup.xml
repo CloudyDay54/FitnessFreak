@@ -4,6 +4,8 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center_vertical"
     android:orientation="vertical"
+    android:background="@drawable/workout2"
+    android:gravity="center"
     xmlns:android="http://schemas.android.com/apk/res/android" >
 
 
@@ -12,6 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/firstname"
+        android:textColor="@color/myfavouriteyellow"
+        android:textColorHint="@color/myfavouriteyellow"
         android:inputType="text"/>
 
     <EditText
@@ -19,6 +23,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/lastname"
+        android:textColor="@color/myfavouriteyellow"
+        android:textColorHint="@color/myfavouriteyellow"
         android:inputType="text"/>
 
     <EditText
@@ -26,6 +32,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/enteremail"
+        android:textColor="@color/myfavouriteyellow"
+        android:textColorHint="@color/myfavouriteyellow"
         android:inputType="textEmailAddress"/>
 
     <EditText
@@ -33,6 +41,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/enterpassword"
+        android:textColor="@color/myfavouriteyellow"
+        android:textColorHint="@color/myfavouriteyellow"
         android:inputType="textPassword"/>
 
     <EditText
@@ -40,6 +50,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/retypepassword"
+        android:textColor="@color/myfavouriteyellow"
+        android:textColorHint="@color/myfavouriteyellow"
         android:inputType="textPassword"/>
 
 
@@ -49,14 +61,16 @@
         android:layout_height="wrap_content"
         android:text="@string/createaccount"
         android:textColor="@android:color/black"
-        android:background="@color/myfavouriteblue"/>
+        android:background="@color/myfavouriteyellow"
+        android:layout_margin="4dp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/alreadyhaveaccount"
         android:textAlignment="center"
-        android:textColor="@android:color/black"/>
+        android:textColor="@color/myfavouriteyellow"
+        android:layout_margin="4dp"/>
 
     <Button
         android:id="@+id/btnLoginSignup"
@@ -64,7 +78,8 @@
         android:layout_height="wrap_content"
         android:text="@string/login"
         android:textColor="@android:color/black"
-        android:background="@color/myfavouriteblue"/>
+        android:background="@color/myfavouriteyellow"
+        android:layout_margin="4dp"/>
 
 
 

@@ -21,5 +21,6 @@
     <string name="profile">Profile</string>
     <string name="button">Button</string>
     <string name="logout">Logout</string>
+    <string name="title_activity_gym_instructors">Map</string>
 
 </resources>

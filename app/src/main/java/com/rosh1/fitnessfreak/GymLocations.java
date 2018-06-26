@@ -7,6 +7,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -42,5 +43,14 @@ public class GymLocations extends FragmentActivity implements OnMapReadyCallback
         LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
+        //Add a marker in Nairobi
+        LatLng Nairobi = new LatLng(-1.29, 36.82);
+        mMap.addMarker(new MarkerOptions()
+                .position(Nairobi)
+                .title("Nairobi Baby")
+                .snippet("Open From: Mon-Sun: 8am-5pm")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.fitness_center)));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(Nairobi));
     }
 }

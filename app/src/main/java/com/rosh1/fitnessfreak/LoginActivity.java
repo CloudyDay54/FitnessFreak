@@ -14,10 +14,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.app.ProgressDialog;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.rosh1.fitnessfreak.R;
 
 public class LoginActivity extends AppCompatActivity {
+
+    //defining firebase auth object
+    private FirebaseAuth mAuth;
+    private ProgressDialog progressDialog;
 
     Button btnLoginLogin, btnSignupLogin;
     EditText txtUserNameLogin, txtPasswordLogin;
@@ -27,11 +34,16 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        //initializing firebase auth object
+        mAuth = FirebaseAuth.getInstance();
+
         btnLoginLogin =  findViewById(R.id.btnLoginLogin);
         btnSignupLogin = findViewById(R.id.btnSignupLogin);
 
         txtUserNameLogin = findViewById(R.id.txtUsernameLogin);
         txtPasswordLogin = findViewById(R.id.txtPasswordLogin);
+
+
 
         //Info.setText("No of attempts remaining: 5");
 

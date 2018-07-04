@@ -42,6 +42,16 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         //initializing firebase auth object
         mAuth = FirebaseAuth.getInstance();
 
+        //if getCurrentUser does not return null
+        if(mAuth.getCurrentUser() != null){
+            //that means user is already logged in so close this activity
+            finish();
+
+            //and open profile activity
+            startActivity(new Intent(getApplicationContext(), Home.class));
+        }
+
+        //initializing views
         btnCreateAccountSignup = findViewById(R.id.btnCreateAccountSignup);
         btnLoginSignup = findViewById(R.id.btnLoginSignup);
 
@@ -52,22 +62,27 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         txtRetypePasswordSignup = findViewById(R.id.txtRetypePasswordSignup);
 
 
-        btnLoginSignup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
+        btnLoginSignup.setOnClickListener(this);
         btnCreateAccountSignup.setOnClickListener(this);
     }
 
     private void registerUser(){
         //getting email and password from EditTexts
+        String first_name = txtFirstNameSignup.getText().toString().trim();
+        String last_name = txtLastNameSignup.getText().toString().trim();
         String email = txtEmailSignup.getText().toString().trim();
         String password = txtPasswordSignup.getText().toString().trim();
+        String retype_password = txtRetypePasswordSignup.getText().toString().trim();
+
+        if(TextUtils.isEmpty(first_name)){
+            Toast.makeText(this, "Please enter your First Name", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if(TextUtils.isEmpty(last_name)){
+            Toast.makeText(this, "Please enter your Last Name", Toast.LENGTH_LONG).show();
+            return;
+        }
 
         if(TextUtils.isEmpty(email)){
             Toast.makeText(this, "Please enter email", Toast.LENGTH_LONG).show();
@@ -79,7 +94,17 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
             return;
         }
 
-        //if the email and passsword are not empty displaying a progress dialog
+        if(TextUtils.isEmpty(retype_password)){
+            Toast.makeText(this, "Please Retype Your Password", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if(!password.equals(retype_password)){
+            Toast.makeText(this, "Error: Password and Retype Password do not match", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        //if the details are not empty displaying a progress dialog
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Registering: Please Wait...");
@@ -92,11 +117,14 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         //checking if successful
                         if(task.isSuccessful()){
+                            //open Home Activity
+                            finish();
+                            startActivity(new Intent(getApplicationContext(), Home.class));
                             //display some message here
                             Toast.makeText(SignupActivity.this, "Registartion Successfull", Toast.LENGTH_SHORT).show();
                         } else {
                             //display some message here
-                            Toast.makeText(SignupActivity.this, "Registration Failed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignupActivity.this, "Registration Failed: Please Try Again", Toast.LENGTH_SHORT).show();
                         }
                         progressDialog.dismiss();
                     }
@@ -106,6 +134,15 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View view) {
-        registerUser();
+
+        if(view == btnCreateAccountSignup){
+            registerUser();
+        }
+
+        if(view == btnLoginSignup){
+            //open LoginActivity when user taps on btnLoginSignup\
+            startActivity(new Intent(this, LoginActivity.class));
+        }
+
     }
 }

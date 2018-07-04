@@ -2,10 +2,12 @@ package com.rosh1.fitnessfreak;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
@@ -16,18 +18,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.app.ProgressDialog;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.rosh1.fitnessfreak.R;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     //defining firebase auth object
     private FirebaseAuth mAuth;
     private ProgressDialog progressDialog;
 
     Button btnLoginLogin, btnSignupLogin;
-    EditText txtUserNameLogin, txtPasswordLogin;
+    EditText txtEmailLogin, txtPasswordLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,36 +42,79 @@ public class LoginActivity extends AppCompatActivity {
         //initializing firebase auth object
         mAuth = FirebaseAuth.getInstance();
 
+        //if the object getCurrentUser method is not null, it means the user is already logged in
+        if(mAuth.getCurrentUser() != null){
+            //close this activity
+            finish();
+            //opening Home Activity
+            startActivity(new Intent(getApplicationContext(), Home.class));
+        }
+
+        //initializing views
         btnLoginLogin =  findViewById(R.id.btnLoginLogin);
         btnSignupLogin = findViewById(R.id.btnSignupLogin);
 
-        txtUserNameLogin = findViewById(R.id.txtUsernameLogin);
+        txtEmailLogin = findViewById(R.id.txtEmailLogin);
         txtPasswordLogin = findViewById(R.id.txtPasswordLogin);
 
+        progressDialog = new ProgressDialog(this);
 
-
-        //Info.setText("No of attempts remaining: 5");
-
-        btnLoginLogin.setOnClickListener(new View.OnClickListener() {
+        /*btnLoginLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 validate(txtUserNameLogin.getText().toString(), txtPasswordLogin.getText().toString());
 
             }
-        });
+        }); */
 
-        btnSignupLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
-                startActivity(intent);
-            }
-        });
+        btnLoginLogin.setOnClickListener(this);
+
+        btnSignupLogin.setOnClickListener(this);
 
     }
 
+    //method for user login
+    private void userLogin(){
+        String email = txtEmailLogin.getText().toString().trim();
+        String password = txtPasswordLogin.getText().toString().trim();
 
-    private void validate (String Username, String Password){
+        //checking if email and password are empty
+        if(TextUtils.isEmpty(email)){
+            Toast.makeText(this, "Please Enter Email", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if(TextUtils.isEmpty(password)){
+            Toast.makeText(this, "Please enter Password", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        //if the meail and password are not empty, dispaly a progress dialog
+
+        progressDialog.setMessage("Logging In: Please Wait...");
+        progressDialog.show();
+
+        //logging in the user
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        progressDialog.dismiss();
+                        //if the task is successful
+                        if(task.isSuccessful()){
+                            //start the Home Activity
+                            finish();
+                            startActivity(new Intent(getApplicationContext(), Home.class));
+                            Toast.makeText(LoginActivity.this, "Login Successfull", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(LoginActivity.this, "Error: Incorrect Email and Password", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+
+
+    /*private void validate (String Username, String Password){
         if((Username.equals("Admin")) && (Password.equals("1234"))){
 
             Toast toast = Toast.makeText(LoginActivity.this, "Successfully Logged In", Toast.LENGTH_LONG);
@@ -80,7 +128,7 @@ public class LoginActivity extends AppCompatActivity {
             Toast toast = Toast.makeText(LoginActivity.this, "Invalid Login. Please Try Again", Toast.LENGTH_LONG);
             toast.show();
         }
-    }
+    } */
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -104,5 +152,18 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(view == btnLoginLogin){
+            userLogin();
+        }
+
+        if(view == btnSignupLogin){
+            finish();
+            startActivity(new Intent(this, SignupActivity.class));
+        }
+
     }
 }

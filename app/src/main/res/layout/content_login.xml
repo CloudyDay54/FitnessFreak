@@ -10,13 +10,13 @@
 
 
     <EditText
-        android:id="@+id/txtUsernameLogin"
+        android:id="@+id/txtEmailLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/enteremail"
         android:textColor="@color/myfavouriteyellow"
         android:textColorHint="@color/myfavouriteyellow"
-        android:inputType="text"/>
+        android:inputType="textEmailAddress"/>
 
     <EditText
         android:id="@+id/txtPasswordLogin"
